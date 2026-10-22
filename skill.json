@@ -1,0 +1,59 @@
+{
+  "name": "genpark-personal-agent-interstitial-lactate-anaerobic-threshold-skill",
+  "version": "1.0.0",
+  "title": "Continuous Interstitial Lactate & Anaerobic Threshold Pacer Skill",
+  "description": "Continuous lactate monitoring (CLM) interstitial fluid dynamics, onset of blood lactate accumulation (OBLA 4 mmol/L) shift, and endurance pacing governor. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "lactate-threshold",
+    "clm-sensor",
+    "anaerobic-capacity",
+    "endurance-pacing",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "evaluate_interstitial_lactate_dynamics",
+      "description": "Assess continuous lactate telemetry (mmol/L) and identify current metabolic domain (Aerobic, Threshold, Severe).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "lactate_mmol_l": {
+            "type": "number"
+          },
+          "current_power_or_pace": {
+            "type": "number"
+          },
+          "time_in_zone_minutes": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "lactate_mmol_l"
+        ]
+      }
+    },
+    {
+      "name": "calculate_lactate_clearance_recovery_pace",
+      "description": "Calculate active recovery wattage to maximize monocarboxylate transporter (MCT1) lactate clearance.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "lactate_peak_mmol": {
+            "type": "number"
+          },
+          "threshold_watts": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "threshold_watts"
+        ]
+      }
+    }
+  ]
+}
